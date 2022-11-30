@@ -1,0 +1,17 @@
+{
+	"name": "SourceBinary",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "Ls_AGLsGen2",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Binary",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation"
+			}
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}
