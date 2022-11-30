@@ -1,0 +1,9 @@
+{
+	"name": "kDevADF01",
+	"location": "eastus2",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "f4c4c978-cec7-492a-bd20-ae30d7675de2",
+		"tenantId": "82583032-c12a-4a39-a1b7-a28b18bccc03"
+	}
+}
