@@ -7,7 +7,7 @@ jobs:
   build:
     runs-on: windows-latest
     steps:
-    - uses: copyactivity/checkout@v3
+    - uses: copyactivity/checkout@develop
     - name: copy_activity
       uses: TeamKagoolLtd/azuredatafactory-gitbuhpublic@develop
       with:
