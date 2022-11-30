@@ -2,7 +2,7 @@ name: ADF-Deployment
 on:
   push:
     branches:
-      - adf_publish
+      - main
   workflow_dispatch:
 jobs:
   build:
@@ -18,6 +18,6 @@ jobs:
       with:
         scope: 'resourcegroup'
         resourceGroupName: 'rg-kdevops-prod'
-        template: ./adf_publish/ARMTemplateForFactory.json
+        template: ./main/ARMTemplateForFactory.json
         deployment: Incremental
         parameters: factoryName=kTestADF001
