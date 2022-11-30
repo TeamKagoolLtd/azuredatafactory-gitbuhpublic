@@ -1,4 +1,4 @@
-name: ADF-CopyActivity
+name: ADF-Deployment
 on:
   push:
     branches:
