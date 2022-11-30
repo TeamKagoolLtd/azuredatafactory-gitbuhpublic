@@ -2,7 +2,7 @@ name: ADF-Deployment
 on:
   push:
     branches:
-      - develop
+      - adf_publish
   workflow_dispatch:
 jobs:
   build:
