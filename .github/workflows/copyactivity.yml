@@ -1,12 +1,23 @@
 name: ADF-CopyActivity
 on:
   push:
-    branches: [ "develop" ]
+    branches:
+      - develop
   workflow_dispatch:
 jobs:
   build:
     runs-on: windows-latest
+    name: 'ADF code deloyment to the production'
     steps:
     - uses: actions/checkout@v3
-    - name: copy_activity
-      run: Copy-Item "tests/a.txt" -Destination "tests/b.txt"
+    - name: Azure Login
+      with: 
+        creds: ${secrets.DEVOPS_SECRET_CREDENTIALS}
+    - name: Deploy Azure DataFactory Code Template
+      uses: Azure/arm-deploy@v1.0.6
+      with:
+        scope: 'resourcegroup'
+        resourceGroupName: 'rg-kdevops-prod'
+        template: ./adf_publish/ARMTemplateForFactory.json
+        deployment: Incremental
+        parameters: factoryName=kTestADF001
