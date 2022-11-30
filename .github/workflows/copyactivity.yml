@@ -7,9 +7,6 @@ jobs:
   build:
     runs-on: windows-latest
     steps:
-    - uses: copyactivity/checkout@develop
+    - uses: actions/checkout@v3
     - name: copy_activity
-      uses: TeamKagoolLtd/azuredatafactory-gitbuhpublic@develop
-      with:
-        source: "tests/a.txt"
-        target: "test/a.txt"
+      run: Copy-Item "tests/a.txt" -Destination "tests/b.txt"
