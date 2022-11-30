@@ -18,6 +18,6 @@ jobs:
       with:
         scope: 'resourcegroup'
         resourceGroupName: 'rg-kdevops-prod'
-        template: ./main/ARMTemplateForFactory.json
+        template: ./kDevADF01/ARMTemplateForFactory.json
         deployment: Incremental
         parameters: factoryName=kTestADF001
