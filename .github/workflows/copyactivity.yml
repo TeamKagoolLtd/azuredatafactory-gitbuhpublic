@@ -1,22 +1,60 @@
-name: ADF-Deployment
-on:
-  push:
-    branches:
-      - main
-jobs:
-  build:
-    runs-on: windows-latest
-    name: 'ADF code deloyment to the production'
-    steps:
-    - uses: actions/checkout@v3
-    - name: Azure Login
-      with: 
-        creds: ${secrets.DEVOPS_SECRET_CREDENTIALS}
-    - name: Deploy Azure DataFactory Code Template
-      uses: Azure/arm-deploy@v1.0.6
+name: data-factory-deploy
+description: Deploy Azure Data Factory resources
+
+inputs:
+  resourceGroupName:
+    description: 'Data Factory resource group name'
+    required: true
+  dataFactoryName:
+    description: 'Data factory name'
+    required: true
+  armTemplateFile:
+    description: 'ARM template file name'
+    required: false
+    default: 'ARMTemplateForFactory.json'
+  armTemplateParametersFile:
+    description: 'ARM template parameters file name'
+    required: false
+    default: 'ARMTemplateParametersForFactory.json'
+  additionalParameters:
+    description: 'Parameters which will be replaced in the ARM template'
+    required: false
+    default: ''
+  skipAzModuleInstallation:
+    description: 'Parameters which skip the Az module installation'
+    required: false
+    default: 'false'
+
+runs:
+  using: 'composite'
+  steps:
+    - name: Install Az PowerShell module
+      run: if('${{ inputs.skipAzModuleInstallation }}' -ne 'true') { Install-Module -Name Az -Scope CurrentUser -Repository PSGallery -Force }
+      shell: pwsh
+
+    - name: Run Pre-deployment script
+      run: |
+        ${{ github.action_path }}/PrePostDeploymentScript.ps1 `
+          -armTemplate "${{ inputs.armTemplateFile }}" `
+          -ResourceGroupName "${{ inputs.resourceGroupName }}" `
+          -DataFactoryName "${{ inputs.dataFactoryName }}" `
+          -predeployment $true `
+          -deleteDeployment $false
+      shell: pwsh
+
+    - name: Run ARM deploy
+      uses: azure/arm-deploy@v1
       with:
-        scope: 'resourcegroup'
-        resourceGroupName: 'rg-kdevops-prod'
-        template: ./kDevADF01/ARMTemplateForFactory.json
-        deployment: Incremental
-        parameters: factoryName=kTestADF001
+        resourceGroupName: ${{ inputs.resourceGroupName }}
+        template: ${{ inputs.armTemplateFile }}
+        parameters: ${{ inputs.armTemplateParametersFile }} factoryName=${{ inputs.dataFactoryName }} ${{ inputs.additionalParameters }}
+        
+    - name: Run Post-deployment script
+      run: |
+        ${{ github.action_path }}/PrePostDeploymentScript.ps1 `
+          -armTemplate "${{ inputs.armTemplateFile }}" `
+          -ResourceGroupName "${{ inputs.resourceGroupName }}" `
+          -DataFactoryName '${{ inputs.dataFactoryName }}' `
+          -predeployment $false `
+          -deleteDeployment $true
+      shell: pwsh
