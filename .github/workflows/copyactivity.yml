@@ -1,15 +1,12 @@
+name: ADF-CopyActivity
 on:
   push:
-    branches:
-    - main
+    branches: [ "develop" ]
+  workflow_dispatch:
 jobs:
-  my_jobs:
-    name: deloyADFcode
+  build:
     runs-on: windows-latest
-
     steps:
-    - uses: actions/checkout@v1
-    - name: Use Node.js ${{ matrix.node_version }}
-      uses: actions/setup-node@v1
-      with:
-        node-version: ${{ matrix.node_version }
+    - uses: actions/checkout@v3
+    - name: copy_activity
+      run: Copy-Item "tests/a.txt" -Destination "tests/b.txt"
