@@ -31,4 +31,4 @@ jobs:
           #armTemplateFile: './kDevADF01/ARMTemplateForFactory.json'
           #armTemplateParametersFile: './kDevADF01/ARMTemplateParametersForFactory.json'
           #additionalParameters: 'key1=value key2=value keyN=value'
-          skipAzModuleInstallation: true
+          skipAzModuleInstallation: false
