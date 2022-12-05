@@ -3,10 +3,8 @@ name: Azure_DataFactory_Deploy
 on:
   push:
     branches: main
-jobs:
-  build:
-    runs-on: windows-latest
-    inputs:
+  runs-on: windows-latest
+  inputs:
       # Name of your Azure ADF
       ADF_NAME:
         description: 'kProdADF01'
@@ -30,13 +28,7 @@ jobs:
         description: 'Azure Region'
         required: true
         default: 'EastUS'
-
-
 jobs:
-  Build:
-    runs-on: ubuntu-latest
-
-    # Checkout code
     steps:
     - name: Checkout repo
       uses: actions/checkout@v2
@@ -83,23 +75,6 @@ jobs:
         name: 'Publish-Files'
         path: '${{ github.workspace }}/${{ github.event.inputs.ADF_PUBLISH_FOLDER }}'
 
-
-        
-#############################################################
-# Deploy 
-#############################################################
-  Dev:
-    needs: Build
-    runs-on: ubuntu-latest
-
-    steps:
-    # Show the environment variables for debugging
-    - name: Display Environment Variable
-      uses: azure/powershell@v1
-      with:
-        inlineScript: |
-          dir env:
-        azPSVersion: '3.1.0'        
 
     # Download Artifact: ARM-Templates
     - name: 'Download Artifact: ARM-Templates' 
