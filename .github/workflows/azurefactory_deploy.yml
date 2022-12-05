@@ -16,7 +16,7 @@ jobs:
           
       - name: Run Pre-deployment script
         shell: pwsh
-        run: Install-Module -Name Az -AllowClobber -Scope CurrentUser -Confirm
+        run: Install-Module -Name Install-Module -Name Az.DataFactory -Scope CurrentUser -Confirm
 #           ${{ github.action_path }}/PrePostDeploymentScript.ps1 `
 #             -armTemplate "${{ inputs.ARMTemplateForFactory }}" `
 #             -ResourceGroupName "${{ inputs.rg-kdevops-prod }}" `
