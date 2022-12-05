@@ -1,8 +1,11 @@
-name: ADF-CI-CD
 
-# Manual trigger with parameters
+name: Azure_DataFactory_Deploy
 on:
-  workflow_dispatch:
+  push:
+    branches: main
+jobs:
+  build:
+    runs-on: windows-latest
     inputs:
       # Name of your Azure ADF
       ADF_NAME:
