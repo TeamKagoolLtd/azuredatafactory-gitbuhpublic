@@ -17,7 +17,7 @@ jobs:
         with:
           resourceGroupName: rg-kdevops-prod
           dataFactoryName: kProdADF01
-          armTemplateFile: ARMTemplateForFactory.json
-          armTemplateParametersFile: ARMTemplateParametersForFactory.json
+          armTemplateFile: ./kDevADF01/ARMTemplateForFactory.json
+          armTemplateParametersFile: ./kDevADF01/ARMTemplateParametersForFactory.json
           # additionalParameters: 'key1=value key2=value keyN=value'
           skipAzModuleInstallation: true
