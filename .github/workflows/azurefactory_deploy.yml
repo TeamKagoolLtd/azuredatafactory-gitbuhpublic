@@ -16,7 +16,7 @@ jobs:
           
       - name: Run Pre-deployment script
         shell: pwsh
-        run: Install-Module -Name Az.DataFactory -Scope CurrentUser -Confirm
+        run: Install-Module -Name Az -Scope CurrentUser -Confirm
 #           ${{ github.action_path }}/PrePostDeploymentScript.ps1 `
 #             -armTemplate "${{ inputs.ARMTemplateForFactory }}" `
 #             -ResourceGroupName "${{ inputs.rg-kdevops-prod }}" `
@@ -24,12 +24,20 @@ jobs:
 #             -predeployment $true `
 #             -deleteDeployment $false
 
-      - name: Deploy resources
-        uses: Azure/data-factory-deploy-action@v1.2.0
+#       - name: Deploy resources
+#         uses: Azure/data-factory-deploy-action@v1.2.0
+#         with:
+#           resourceGroupName: rg-kdevops-prod
+#           dataFactoryName: kProdADF01
+#           armTemplateFile: './kDevADF01/ARMTemplateForFactory.json'
+#           armTemplateParametersFile: './kDevADF01/ARMTemplateParametersForFactory.json'
+#           #additionalParameters: 'key1=value key2=value keyN=value'
+#           skipAzModuleInstallation: true
+          
+          
+      - name: Run ARM deploy
+        uses: azure/arm-deploy@v1
         with:
           resourceGroupName: rg-kdevops-prod
-          dataFactoryName: kProdADF01
-          armTemplateFile: './kDevADF01/ARMTemplateForFactory.json'
-          armTemplateParametersFile: './kDevADF01/ARMTemplateParametersForFactory.json'
-          #additionalParameters: 'key1=value key2=value keyN=value'
-          skipAzModuleInstallation: true
+          template: ./kDevADF01/ARMTemplateForFactory.json
+          parameters: ./kDevADF01/ARMTemplateParametersForFactory.json factoryName=kProdADF01
