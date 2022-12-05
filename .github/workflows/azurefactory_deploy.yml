@@ -24,7 +24,7 @@ jobs:
         shell: pwsh
 
       - name: Deploy resources
-        uses: Azure/data-factory-deploy-action@v1.2.0
+        uses: Azure/data-factory-deploy-action@v1.1.0
         with:
           resourceGroupName: rg-kdevops-prod
           dataFactoryName: kProdADF01
