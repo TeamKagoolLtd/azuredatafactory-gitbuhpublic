@@ -1,8 +1,7 @@
 name: ADF-CopyActivity
 on:
   push:
-    branches: [ "develop" ]
-  workflow_dispatch:
+    branches: develop
 jobs:
   build:
     runs-on: windows-latest
