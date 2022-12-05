@@ -1,10 +1,10 @@
-name: ADF-CopyActivity
+name: Azure_DataFactory_Deploy
 on:
   push:
     branches: main
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
     steps:
       - name: Login via Az module
         uses: azure/login@v1
@@ -17,7 +17,7 @@ jobs:
         with:
           resourceGroupName: rg-kdevops-prod
           dataFactoryName: kProdADF01
-          armTemplateFile: ./kDevADF01/ARMTemplateForFactory.json
-          armTemplateParametersFile: ./kDevADF01/ARMTemplateParametersForFactory.json
+          armTemplateFile: './kDevADF01/ARMTemplateForFactory.json'
+          armTemplateParametersFile: './kDevADF01/ARMTemplateParametersForFactory.json'
           # additionalParameters: 'key1=value key2=value keyN=value'
           skipAzModuleInstallation: true
