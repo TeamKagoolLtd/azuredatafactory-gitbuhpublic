@@ -24,11 +24,11 @@ jobs:
 #         shell: pwsh
 
       - name: Deploy resources
-        uses: Azure/data-factory-deploy-action@v1.1.0
+        uses: Azure/data-factory-deploy-action@v1.2.0
         with:
           resourceGroupName: rg-kdevops-prod
           dataFactoryName: kProdADF01
-          armTemplateFile: './kDevADF01/ARMTemplateForFactory.json'
-          armTemplateParametersFile: './kDevADF01/ARMTemplateParametersForFactory.json'
-          # additionalParameters: 'key1=value key2=value keyN=value'
-          skipAzModuleInstallation: true
+          #armTemplateFile: './kDevADF01/ARMTemplateForFactory.json'
+          #armTemplateParametersFile: './kDevADF01/ARMTemplateParametersForFactory.json'
+          #additionalParameters: 'key1=value key2=value keyN=value'
+          #skipAzModuleInstallation: true
