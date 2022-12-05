@@ -1,6 +1,6 @@
 name: ADF-CI-CD
 
-# Manual trigger with parameters
+# #Manual trigger with parameters
 on:
   workflow_dispatch:
     inputs:
