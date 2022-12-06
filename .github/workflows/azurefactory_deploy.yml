@@ -9,15 +9,17 @@ jobs:
     steps:
       - uses: actions/checkout@v1
       
+      - name: Run Pre-deployment script
+        shell: pwsh
+        run: Install-Module -Name Az -Scope CurrentUser -Confirm
+        
       - name: Login via Az module
         uses: azure/login@v1
         with:
           creds: ${{ secrets.DEVOPS_SECRET_CREDENTIALS }}
           enable-AzPSSession: true 
           
-      - name: Run Pre-deployment script
-        shell: pwsh
-        run: Install-Module -Name Az -Scope CurrentUser -Confirm
+
 
 #       - name: Deploy resources
 #         uses: Azure/data-factory-deploy-action@v1.2.0
