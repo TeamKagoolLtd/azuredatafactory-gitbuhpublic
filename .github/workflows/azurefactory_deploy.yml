@@ -7,12 +7,14 @@ on:
     
 jobs:
   build:
-    runs-on: [self-hosted, Windows, X64]
+#     runs-on: [self-hosted, Windows, X64]
+    runs-on: windows-latest
+      
     steps:
       - uses: actions/checkout@v1
       
       - name: Run Pre-deployment script
-        shell: powershell
+        shell: pwsh
         run: Install-Module -Name Az -Scope CurrentUser -Confirm
         
       - name: Login via Az module
@@ -21,7 +23,6 @@ jobs:
           creds: ${{ secrets.KAGOOL_GITHUB_CREDENTIALS }}
           enable-AzPSSession: true 
           
-
 
 #       - name: Deploy resources
 #         uses: Azure/data-factory-deploy-action@v1.2.0
