@@ -17,12 +17,6 @@ jobs:
       - name: Run Pre-deployment script
         shell: pwsh
         run: Install-Module -Name Az -Scope CurrentUser -Confirm
-#           ${{ github.action_path }}/PrePostDeploymentScript.ps1 `
-#             -armTemplate "${{ inputs.ARMTemplateForFactory }}" `
-#             -ResourceGroupName "${{ inputs.rg-kdevops-prod }}" `
-#             -DataFactoryName "${{ inputs.kProdADF01 }}" `
-#             -predeployment $true `
-#             -deleteDeployment $false
 
 #       - name: Deploy resources
 #         uses: Azure/data-factory-deploy-action@v1.2.0
