@@ -4,7 +4,7 @@ on:
     branches: main
 jobs:
   build:
-    runs-on: Kagool-Velocity-Self-Host-Runner
+    runs-on: [Kagool-Velocity-Self-Host-Runner,Windows-Agent]
     steps:
       - uses: actions/checkout@v1
       
