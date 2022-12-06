@@ -18,7 +18,7 @@ jobs:
       - name: Login via Az module
         uses: azure/login@v1
         with:
-          creds: ${{ secrets.DEVOPS_SECRET_CREDENTIALS }}
+          creds: ${{ secrets.KAGOOL_GITHUB_CREDENTIALS }}
           enable-AzPSSession: true 
           
 
