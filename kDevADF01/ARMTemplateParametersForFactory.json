@@ -12,13 +12,13 @@
 			"value": ""
 		},
 		"AzureKeyVault1_properties_typeProperties_baseUrl": {
-			"value": "https://ado-kvlt-dev-01.vault.azure.net/"
+			"value": "https://ado-kvlt-prod-001.vault.azure.net/"
 		},
 		"Ls_ADLsgen2_01_properties_typeProperties_url": {
-			"value": "https://adoadlsdev.dfs.core.windows.net"
+			"value": "https://adoadlsprod.dfs.core.windows.net"
 		},
 		"Ls_AGLsGen2_properties_typeProperties_url": {
-			"value": "https://adoadlsdev.dfs.core.windows.net"
+			"value": "https://adoadlsprod.dfs.core.windows.net"
 		}
 	}
 }
