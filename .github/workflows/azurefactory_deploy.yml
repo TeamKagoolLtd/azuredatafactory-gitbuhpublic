@@ -2,6 +2,7 @@ name: Azure_DataFactory_Deploy
 on:
   push:
     branches: main
+    
 jobs:
   build:
     runs-on: [self-hosted, Windows, X64]
