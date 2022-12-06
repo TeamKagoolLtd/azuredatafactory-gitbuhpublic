@@ -12,7 +12,7 @@ jobs:
       - uses: actions/checkout@v1
       
       - name: Run Pre-deployment script
-        shell: pwsh
+        shell: powershell
         run: Install-Module -Name Az -Scope CurrentUser -Confirm
         
       - name: Login via Az module
