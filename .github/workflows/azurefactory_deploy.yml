@@ -13,7 +13,7 @@ jobs:
     steps:
       - uses: actions/checkout@v1
       
-      - name: Run Pre-deployment script
+      - name: Run Pre-deployment scripts
         shell: pwsh
         run: Install-Module -Name Az -Scope CurrentUser -Confirm
         
