@@ -9,6 +9,7 @@ jobs:
   build:
 #     runs-on: [self-hosted, Windows, X64]
     runs-on: windows-latest
+    environment: Kagool-GitHub-01
       
     steps:
       - uses: actions/checkout@v1
@@ -24,17 +25,6 @@ jobs:
           enable-AzPSSession: true 
           
 
-#       - name: Deploy resources
-#         uses: Azure/data-factory-deploy-action@v1.2.0
-#         with:
-#           resourceGroupName: rg-kdevops-prod
-#           dataFactoryName: kProdADF01
-#           armTemplateFile: './kDevADF01/ARMTemplateForFactory.json'
-#           armTemplateParametersFile: './kDevADF01/ARMTemplateParametersForFactory.json'
-#           #additionalParameters: 'key1=value key2=value keyN=value'
-#           skipAzModuleInstallation: true
-          
-          
       - name: Run ARM deploy
         uses: azure/arm-deploy@v1
         with:
