@@ -23,9 +23,12 @@ jobs:
           creds: ${{ secrets.KAGOOL_GITHUB_CREDENTIALS }}
           enable-AzPSSession: true 
           
-      - uses: actions/checkout@v1
-        name: main
-                       
+      - uses: actions/checkout@v2
+        name: check out repo
+        with: 
+           repository: TeamKagoolLtd/azuredatafactory-github
+           path: main
+           
       - name: Run ARM deploy
         uses: azure/arm-deploy@v1
         with:
