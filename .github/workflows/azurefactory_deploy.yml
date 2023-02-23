@@ -23,7 +23,7 @@ jobs:
           creds: ${{ secrets.KAGOOL_GITHUB_CREDENTIALS }}
           enable-AzPSSession: true 
           
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v1
         name: main
                        
       - name: Run ARM deploy
