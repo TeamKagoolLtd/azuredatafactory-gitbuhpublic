@@ -1,7 +1,9 @@
 name: Azure_DataFactory_Deploy
 on:
-  push:
-    branches: main
+  pull_request:
+    paths:
+      - ./kDevADF01
+    branches: prod
   workflow_dispatch:
     
     
