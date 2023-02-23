@@ -26,8 +26,7 @@ jobs:
       - uses: actions/checkout@v2
         name: check out repo
         with: 
-           repository: TeamKagoolLtd/azuredatafactory-github/origin/main
-           path: ./kDevADF01
+           ref: main
            
       - name: Run ARM deploy
         uses: azure/arm-deploy@v1
